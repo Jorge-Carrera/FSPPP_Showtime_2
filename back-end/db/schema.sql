@@ -1,11 +1,15 @@
-DROP DATABASE IF EXISTS cta_dev;
-CREATE DATABASE cta_dev;
+DROP DATABASE IF EXISTS showtime;
+CREATE DATABASE showtime;
 
-\c cta_dev;
+\c showtime;
 
-DROP TABLE IF EXISTS test;
+DROP TABLE IF EXISTS watchlist;
 
-CREATE TABLE test (
+CREATE TABLE watchlist (
     id SERIAL PRIMARY KEY, 
-    name TEXT
+    title TEXT, 
+    genre TEXT,
+    overview TEXT,
+    director TEXT,
+    image TEXT
 );
