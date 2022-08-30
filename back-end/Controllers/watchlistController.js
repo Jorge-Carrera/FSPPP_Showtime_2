@@ -4,7 +4,7 @@ const watchlist = express.Router();
 const {
   getAllMovies, 
   getMovie,
-  createWatchlist, 
+  createMovie, 
   deleteMovie
 } = require('../queries/watchlist');
 
@@ -14,7 +14,7 @@ watchlist.get('/', async (req, res) => {
   if(allMovies[0]) {
     res.status(200).json({payload: allMovies, success:true});
   } else {
-    res.status(500).json({payload: 'error', success: false , error: 'error'});
+    res.status(500).json({payload: 'error', success: false , error: 'Server error'});
   }
 });
 
@@ -29,7 +29,7 @@ watchlist.get('/:id', async (req, res) => {
 }); 
 
 watchlist.post('/', async (req, res) => {
-  const createdWatchlist = await createWatchlist(req.body); 
+  const createdWatchlist = await createMovie(req.body); 
   if(createdWatchlist.id) {
     res.status(200).json({payload:createdWatchlist, success: true});
   } else {

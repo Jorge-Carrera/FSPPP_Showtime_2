@@ -21,7 +21,7 @@ const getMovie = async (id) => {
   }
 };
 
-const createWatchlist = async (movie) => {
+const createMovie = async (movie) => {
   try {
     const { title, genre, overview, director, image } = watchlist;
     const newWatchlist = await db.one(
@@ -45,4 +45,4 @@ const deleteMovie = async (id) => {
   }
 };
 
-module.exports = { getMovie, getAllMovies, createWatchlist, deleteMovie };
+module.exports = { getMovie, getAllMovies, createMovie, deleteMovie };
