@@ -8,6 +8,7 @@ import requests from './utils/requests'
 import Header from './Components/Header'
 import MovieDetails from './Components/MovieDetails'
 import Navbar from './Components/Navbar'
+import Watchlist from './Components/Watchlist'
 
 // Pages 
 import Home from './Pages/Home'
@@ -23,8 +24,9 @@ function App() {
         <Header/>
         <Navbar setSelected={setSelected}/>
       <Routes>
-      <Route path="/" element={<Home selected={selected} />} />
-      <Route path="/movie/:id" element={<MovieDetails /> } />
+      <Route exact path="/" element={<Home selected={selected} />} />
+      <Route exact path="/movie/:id" element={<MovieDetails /> } />
+      <Route exact path="/watchlist" element={<Watchlist /> } />
       </Routes>
       </Router>
     </div>

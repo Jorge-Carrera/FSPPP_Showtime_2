@@ -1,3 +1,4 @@
+import React from "react";
 import HeaderItem from "./HeaderItem"
 import {
   RectangleStackIcon, 
@@ -6,14 +7,15 @@ import {
   MagnifyingGlassIcon, 
   UserIcon,
 } from '@heroicons/react/24/outline'
+import { Link } from "react-router-dom"
 
 function Header() {
   return (
     <header className="flex flex-col sm:flex-row m-5 justify-between items-center h-auto">
       <div className="flex flex-grow justify-evenly max-w-2xl">
-        <HeaderItem title={'HOME'} Icon={HomeIcon}/>
+        <Link to='/'><HeaderItem title={'HOME'} Icon={HomeIcon}/></Link>
         <HeaderItem title={'TRENDING'} Icon={BoltIcon}/>
-        <HeaderItem title={'WATCHLIST'} Icon={RectangleStackIcon}/>
+        <Link to='/watchlist'><HeaderItem title={'WATCHLIST'} Icon={RectangleStackIcon}/></Link>
         <HeaderItem title={'SEARCH'} Icon={MagnifyingGlassIcon}/>
         <HeaderItem title={'ACCOUNT'} Icon={UserIcon}/>
       </div>
