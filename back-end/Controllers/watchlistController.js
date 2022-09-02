@@ -29,9 +29,9 @@ watchlist.get('/:id', async (req, res) => {
 }); 
 
 watchlist.post('/', async (req, res) => {
-  const createdWatchlist = await createMovie(req.body); 
-  if(createdWatchlist.id) {
-    res.status(200).json({payload:createdWatchlist, success: true});
+  const createdMovie = await createMovie(req.body); 
+  if(createdMovie.id) {
+    res.status(200).json({payload:createdMovie, success: true});
   } else {
     res.status(422).json({payload: 'unprocessable entity', success: false, error: 'unprocessable entity'})
   }

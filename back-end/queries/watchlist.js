@@ -21,14 +21,15 @@ const getMovie = async (id) => {
   }
 };
 
+
 const createMovie = async (movie) => {
   try {
-    const { title, genre, overview, director, image } = watchlist;
-    const newWatchlist = await db.one(
-      `INSERT INTO watchlist (title, genre, overview, director, image) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      [title, genre, overview, director, image]
+    const { title, genre, overview, runtime, tagline, rating, image } = movie;
+    const newMovie = await db.one(
+      `INSERT INTO watchlist (title, genre, overview, runtime, tagline, rating, image) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      [title, genre, overview, runtime, tagline, rating, image]
     );
-    return newWatchlist;
+    return newMovie;
   } catch (error) {
     return error;
   }
@@ -40,6 +41,7 @@ const deleteMovie = async (id) => {
       `DELETE FROM watchlist WHERE id = $1 RETURNING *`,
       id
     );
+    return deletedMovie;
   } catch (error) {
     return error;
   }

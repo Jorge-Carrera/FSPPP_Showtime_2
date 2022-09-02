@@ -19,6 +19,7 @@ function MovieDetails() {
 
   return (
     <div className="w-full h-[550px] text-white">
+      {console.log(movie)}
       <div className="absolute w-full h-[550px] bg-gradient-to-r from-black "></div>
       <img
         className="w-full h-full object-cover mt-8"

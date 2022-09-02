@@ -10,6 +10,8 @@ CREATE TABLE watchlist (
     title TEXT, 
     genre TEXT,
     overview TEXT,
-    director TEXT,
+    runtime INTEGER,
+    tagline TEXT,
+    rating DECIMAL(3,2),
     image TEXT
 );

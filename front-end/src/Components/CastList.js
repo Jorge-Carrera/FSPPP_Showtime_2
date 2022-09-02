@@ -17,7 +17,6 @@ function CastList({ id }) {
 
   return (
     <div className="casts">
-      {console.log(cast)}
       {cast.map((item, i) => {
         return (
           <div key={i}>
