@@ -61,26 +61,26 @@ function MovieDetails() {
   };
 
   return (
-    <div className="w-full h-[550px] text-white">
-      <div className="absolute w-full h-[550px] bg-gradient-to-r from-black "></div>
+    <div className="w-full h-full text-white">
+      {/* <div className="absolute w-full h-[550px] bg-gradient-to-r from-black "></div> */}
       <img
-        className="w-full h-full object-cover mt-8"
+        className="w-full h-[70vh] bg-cover bg-center bg-no-repeat p-2 "
         src={`https://image.tmdb.org/t/p/original/${
           movie?.backdrop_path || movie?.poster_path
         }`}
         alt={movie?.title}
+        
       />
-      <div className="items-start max-w-[1260px] ml-auto mr-auto mt-[-200px] relative pt-8">
-        <div className="">
+      <div className="items-start max-w-[1260px] ml-20 mr-auto -mt-[300px] relative py-8">
           <img
-            className="rounded-lg bg-center bg-cover md:h-[476px] "
+            className="hidden sm:flex rounded-lg bg-center bg-cover bg-no-repeat w-[30%]"
             src={`https://image.tmdb.org/t/p/original/${
               movie?.poster_path || movie?.backdrop_path
             }`}
             alt={movie?.title}
           />
+          <div className="w-[70%]">
           <h1 className="">{movie?.title || movie?.name}</h1>
-          <div className="pt-6 ml-8">
             {movie?.genres.slice(0, 5).map((genre, i) => (
               <span
                 className="ml-2 p-2 border-2 rounded-full text-sm font-semibold"
@@ -89,13 +89,18 @@ function MovieDetails() {
                 {genre.name}
               </span>
             ))}
-            <button className="ml-2 p-2 border-2 text-sm font-semibold" onClick={handleClick}> ADD TO WATCHLIST </button>
+            <button
+              className="ml-2 p-2 border-2 text-sm font-semibold"
+              onClick={handleClick}
+            >
+              {" "}
+              ADD TO WATCHLIST{" "}
+            </button>
           </div>
           <div className="overview">{movie?.overview}</div>
           <h2>Cast</h2>
           <CastList id={movie?.id} />
         </div>
-      </div>
     </div>
   );
 }
