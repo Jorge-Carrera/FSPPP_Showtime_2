@@ -10,7 +10,7 @@ function Movie({ result }) {
       <Link to={`/movie/${result.id}`}>
         <img
           src={`
-      ${BASE_IMG_URL}${result.backdrop_path || result.poster.path}`}
+          ${BASE_IMG_URL}${result.backdrop_path || result.poster.path}`}
           height={1080}
           width={1920}
         />

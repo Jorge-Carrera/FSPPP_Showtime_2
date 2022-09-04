@@ -7,8 +7,27 @@ function MovieDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [movie, setMovie] = useState();
+  const [genreArr, setGenre] = useState([]);
   const BASE_URL = "https://api.themoviedb.org/3/movie/";
   const KEY = process.env.REACT_APP_API_KEY;
+  const API = process.env.REACT_APP_BACKEND_API_URL;
+
+  const addMovie = (newMovie) => {
+    axios
+      .post(`${API}/watchlist`, newMovie)
+      .then(() => navigate(`/`))
+      .catch((err) => console.log(err));
+  };
+
+  const [item, setItem] = useState({
+    title: "",
+    genre: "",
+    overview: "test",
+    runtime: 0,
+    tagline: "",
+    rating: 0.0,
+    image: "",
+  });
 
   useEffect(() => {
     axios
@@ -17,9 +36,32 @@ function MovieDetails() {
       .catch((err) => console.log(err));
   }, [id]);
 
+  useEffect(() => {
+    setGenre(
+      movie?.genres.slice(0, 5).map((genre) => {
+        return genre.name;
+      })
+    );
+  }, [movie]);
+
+  useEffect(() => {
+    setItem({
+      title: movie?.title,
+      genre: genreArr?.[0],
+      overview: movie?.overview,
+      runtime: movie?.runtime,
+      tagline: movie?.tagline,
+      rating: movie?.vote_average,
+      image: `https://image.tmdb.org/t/p/original${movie?.poster_path}`,
+    });
+  }, [movie, genreArr]);
+
+  const handleClick = () => {
+    addMovie(item);
+  };
+
   return (
     <div className="w-full h-[550px] text-white">
-      {console.log(movie)}
       <div className="absolute w-full h-[550px] bg-gradient-to-r from-black "></div>
       <img
         className="w-full h-full object-cover mt-8"
@@ -44,15 +86,13 @@ function MovieDetails() {
                 className="ml-2 p-2 border-2 rounded-full text-sm font-semibold"
                 key={i}
               >
-                {genre?.name}
+                {genre.name}
               </span>
             ))}
+            <button className="ml-2 p-2 border-2 text-sm font-semibold" onClick={handleClick}> ADD TO WATCHLIST </button>
           </div>
           <div className="overview">{movie?.overview}</div>
-          <h2>
-            Cast
-            {console.log(id)}
-          </h2>
+          <h2>Cast</h2>
           <CastList id={movie?.id} />
         </div>
       </div>
