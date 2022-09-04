@@ -61,47 +61,54 @@ function MovieDetails() {
   };
 
   return (
-    <div className="w-full h-full text-white">
-      {/* <div className="absolute w-full h-[550px] bg-gradient-to-r from-black "></div> */}
-      <img
-        className="w-full h-[70vh] bg-cover bg-center bg-no-repeat p-2 "
-        src={`https://image.tmdb.org/t/p/original/${
-          movie?.backdrop_path || movie?.poster_path
-        }`}
-        alt={movie?.title}
-        
-      />
-      <div className="items-start max-w-[1260px] ml-20 mr-auto -mt-[300px] relative py-8">
+    <section>
+      <div
+        className="h-[80vh] mt-8 w-full bg-cover bg-center bg-no-repeat "
+        style={{
+          backgroundImage: `url("https://image.tmdb.org/t/p/original/${
+            movie?.backdrop_path || movie?.poster_path
+          }")`,
+        }}
+      >
+        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <img
-            className="hidden sm:flex rounded-lg bg-center bg-cover bg-no-repeat w-[30%]"
+            className="hidden lg:mt-[40vh] md:h-[750px] lg:col-span-5 lg:flex "
             src={`https://image.tmdb.org/t/p/original/${
               movie?.poster_path || movie?.backdrop_path
             }`}
             alt={movie?.title}
           />
-          <div className="w-[70%]">
-          <h1 className="">{movie?.title || movie?.name}</h1>
-            {movie?.genres.slice(0, 5).map((genre, i) => (
-              <span
-                className="ml-2 p-2 border-2 rounded-full text-sm font-semibold"
-                key={i}
-              >
-                {genre.name}
-              </span>
-            ))}
-            <button
-              className="ml-2 p-2 border-2 text-sm font-semibold"
-              onClick={handleClick}
-            >
-              {" "}
-              ADD TO WATCHLIST{" "}
-            </button>
+          <div className="mr-auto md:ml-[80px] place-self-center mt-[70vh] lg:col-span-7 text-white">
+            <div>
+              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">
+                {movie?.title || movie?.name}
+              </h1>
+              <p className="max-w-2xl mb-6 font-ligh lg:mb-7 md:text-lg lg:text-xl">
+                {movie?.overview}
+              </p>
+              <div>
+                {movie?.genres.slice(0, 5).map((genre, i) => (
+                  <span
+                    className="border-2 rounded-full text-sm font-semibold content-fit inline-flex items-center justify-center lg:mb-7 px-5 py-3 mr-3 mt-1 text-center "
+                    key={i}
+                  >
+                    {genre.name}
+                  </span>
+                ))}
+                <button
+                  className="border-2 text-sm font-semibold content-fit inline-flex items-center justify-center my-3 px-5 py-3 mr-3 text-center text-black bg-white hover:bg-gray-800 hover:text-white "
+                  onClick={handleClick}
+                >
+                  ADD TO WATCHLIST{" "}
+                </button>
+              </div>
+            </div>
+            <h2>Cast</h2>
+            <CastList id={movie?.id} />
           </div>
-          <div className="overview">{movie?.overview}</div>
-          <h2>Cast</h2>
-          <CastList id={movie?.id} />
         </div>
-    </div>
+      </div>
+    </section>
   );
 }
 
