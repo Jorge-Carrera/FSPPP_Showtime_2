@@ -63,24 +63,25 @@ function MovieDetails() {
   return (
     <section>
       <div
-        className="h-[80vh] mt-8 w-full bg-cover bg-center bg-no-repeat "
+        className="h-[80vh] mt-8 w-full bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url("https://image.tmdb.org/t/p/original/${
             movie?.backdrop_path || movie?.poster_path
           }")`,
         }}
       >
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div className="absolute w-full h-[80vh] bg-gradient-to-t from-black "></div>
+        <div className=" relative grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <img
-            className="hidden lg:mt-[40vh] md:h-[750px] lg:col-span-5 lg:flex "
+            className="hidden lg:-ml-[65px] lg:mt-[40vh] md:h-[750px] lg:col-span-5 lg:flex "
             src={`https://image.tmdb.org/t/p/original/${
               movie?.poster_path || movie?.backdrop_path
             }`}
             alt={movie?.title}
           />
-          <div className="mr-auto md:ml-[80px] place-self-center mt-[70vh] lg:col-span-7 text-white">
+          <div className="mr-auto md:ml-[60px] place-self-center mt-[47vh] lg:mt-[70vh] lg:col-span-7 text-white">
             <div>
-              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">
+              <h1 className="max-w-2xl  mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">
                 {movie?.title || movie?.name}
               </h1>
               <p className="max-w-2xl mb-6 font-ligh lg:mb-7 md:text-lg lg:text-xl">
@@ -96,17 +97,16 @@ function MovieDetails() {
                   </span>
                 ))}
                 <button
-                  className="border-2 text-sm font-semibold content-fit inline-flex items-center justify-center my-3 px-5 py-3 mr-3 text-center text-black bg-white hover:bg-gray-800 hover:text-white "
+                  className="border-2 text-sm font-semibold content-fit inline-flex items-center justify-center my-3 px-5 py-3 mr-3 text-center text-black bg-white hover:bg-[#E41F1D] hover:text-white "
                   onClick={handleClick}
                 >
                   ADD TO WATCHLIST{" "}
                 </button>
               </div>
             </div>
-            <h2>Cast</h2>
-            <CastList id={movie?.id} />
           </div>
         </div>
+        <CastList id={movie?.id} />
       </div>
     </section>
   );

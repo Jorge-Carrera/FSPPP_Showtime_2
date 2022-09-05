@@ -3,7 +3,6 @@ const KEY = process.env.REACT_APP_API_KEY
 
 export default {
   fetchTrending: {
-    title: 'Trending', 
     url: `/trending/movie/week?api_key=${KEY}&language=en-US`
   },
   fetchTopRated: {
@@ -21,10 +20,6 @@ export default {
   fetchHorrorMovies: {
     title: 'Horror',
     url: `/discover/movie?api_key=${KEY}&with_genres=27`
-  },
-  fetchRomanceMovies: {
-    title: 'Romance',
-    url: `/discover/movie?api_key=${KEY}&with_genres=10749`
   },
   fetchMystery : {
     title: 'Mystery',
@@ -46,9 +41,25 @@ export default {
     title: 'TV Movie',
     url: `/discover/movie?api_key=${KEY}&with_genres=10770`
   },
-  fetchDocumentaries : {
-    title: 'Documentary',
-    url: `/discover/movie?api_key=${KEY}&with_genres=99`
+  fetchDramaMovies: {
+    title: 'Drama',
+    url:`/discover/movie?api_key=${KEY}&with_genres=18`
+  },
+  fetchWarMovies : {
+    title: 'War Movies',
+    url:`/discover/movie?api_key=${KEY}&with_genres=10752`
+  },
+  fetchAdventure : {
+    title: 'Adventure',
+    url:`/discover/movie?api_key=${KEY}&with_genres=12`
+  },
+  fetchFantasy : {
+    title: 'Fantasy',
+    url:`/discover/movie?api_key=${KEY}&with_genres=14`
+  },
+  fetchMusic : {
+    title: 'Music Movies',
+    url:`/discover/movie?api_key=${KEY}&with_genres=10402`
   },
 }
 

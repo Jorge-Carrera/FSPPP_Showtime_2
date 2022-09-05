@@ -6,11 +6,12 @@ import requests from "./utils/requests";
 import Header from "./Components/Header";
 import Navbar from "./Components/Navbar";
 
-
 // Pages
 import Home from "./Pages/Home";
 import Index from "./Pages/Index";
 import Show from "./Pages/Show";
+import FourOFour from "./Pages/FourOFour";
+import UnderConstruction from "./Pages/UnderConstruction";
 
 function App() {
   const [selected, setSelected] = useState(requests.fetchTrending.url);
@@ -18,12 +19,14 @@ function App() {
   return (
     <div>
       <Router>
-        <Header />
+        <Header setSelected={setSelected} />
         <Navbar setSelected={setSelected} />
         <Routes>
-          <Route exact path="/" element={<Home selected={selected} />} />
+          <Route exact path="/" element={<Home selected={selected} />}/>
           <Route exact path="/movie/:id" element={<Show />} />
           <Route exact path="/watchlist" element={<Index />} />
+          <Route exact path='/construction' element={<UnderConstruction />} />
+          <Route path='*' element={<FourOFour/>}/>
         </Routes>
       </Router>
     </div>
