@@ -10,6 +10,7 @@ import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import Index from "./Pages/Index";
 import Show from "./Pages/Show";
+import Edit from "./Pages/Edit";
 import FourOFour from "./Pages/FourOFour";
 import UnderConstruction from "./Pages/UnderConstruction";
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/" element={<Home selected={selected} />}/>
           <Route exact path="/movie/:id" element={<Show />} />
           <Route exact path="/watchlist" element={<Index />} />
+          <Route exact path="/watchlist/:id/edit" element={<Edit />} />
           <Route exact path='/construction' element={<UnderConstruction />} />
           <Route path='*' element={<FourOFour/>}/>
         </Routes>

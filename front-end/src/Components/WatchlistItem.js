@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
 function WatchlistItem({ item }) {
   const id = item.id;
@@ -29,6 +30,9 @@ function WatchlistItem({ item }) {
         <p className="font-bold">Rating: {item.rating}</p>
       </div>
       <button className="border-2 text-sm font-semibold w-fit p-1 cursor-pointer mt-2 bg-[#E41F1D] hover:bg-red-800" onClick={handleDelete}>Remove From List</button>
+      <Link to={`/watchlist/${id}/edit`}>
+      <button className="border-2 text-sm font-semibold w-fit p-1 cursor-pointer mt-2 ml-2 bg-gray-700 hover:bg-gray-800" >Edit Movie Info</button>
+      </Link>
     </div>
   );
 }

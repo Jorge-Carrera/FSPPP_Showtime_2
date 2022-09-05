@@ -21,7 +21,6 @@ const getMovie = async (id) => {
   }
 };
 
-
 const createMovie = async (movie) => {
   try {
     const { title, genre, overview, runtime, tagline, rating, image } = movie;
@@ -47,4 +46,17 @@ const deleteMovie = async (id) => {
   }
 };
 
-module.exports = { getMovie, getAllMovies, createMovie, deleteMovie };
+const updateMovie = async (movie, id) => {
+  try {
+    const { title, genre, overview, runtime, tagline, rating, image } = movie;
+    const updatedMovie = await db.one(
+      `UPDATE watchlist SET title = $1, genre = $2, overview = $3, runtime = $4, tagline = $5, rating = $6, image = $7 WHERE id = $8 RETURNING *`,
+      [title, genre, overview, runtime, tagline, rating, image, id]
+    );
+    return updatedMovie
+  } catch (error) {
+    return error
+  }
+};
+
+module.exports = { getMovie, getAllMovies, createMovie, deleteMovie, updateMovie };
