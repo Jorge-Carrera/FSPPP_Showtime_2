@@ -3,12 +3,11 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import CastList from "./CastList";
 
-function MovieDetails() {
+function MovieDetails({ watchlistArr }) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [movie, setMovie] = useState();
   const [genreArr, setGenreArr] = useState([]);
-  const watchlistArr = [];
   const BASE_URL = "https://api.themoviedb.org/3/movie/";
   const KEY = process.env.REACT_APP_API_KEY;
   const API = process.env.REACT_APP_BACKEND_API_URL;
@@ -57,10 +56,16 @@ function MovieDetails() {
     });
   }, [movie, genreArr]);
 
-  const storedMovie = (watchlistArr) => {};
 
   const handleClick = () => {
-    addMovie(item);
+    const isMovieInWatchlist = watchlistArr.some((x) => x === item.title)
+    if (isMovieInWatchlist){
+      alert('This movie is already in your watchlist')
+    } else {
+      watchlistArr.push(item.title)
+      console.log(watchlistArr)
+      addMovie(item);
+    }
   };
 
   return (
@@ -93,7 +98,7 @@ function MovieDetails() {
               <div>
                 {movie?.genres.slice(0, 5).map((genre, i) => (
                   <span
-                    className="border-2 rounded-full text-sm font-semibold content-fit inline-flex items-center justify-center lg:mb-7 px-5 py-3 mr-3 mt-1 text-center "
+                    className="border-2 rounded-full text-sm font-semibold content-fit inline-flex items-center justify-center lg:mb-7 px-5 py-3 mr-3 mt-1 text-center"
                     key={i}
                   >
                     {genre.name}

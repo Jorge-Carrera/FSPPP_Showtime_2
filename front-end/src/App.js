@@ -16,6 +16,7 @@ import UnderConstruction from "./Pages/UnderConstruction";
 
 function App() {
   const [selected, setSelected] = useState(requests.fetchTrending.url);
+  let watchlistArr = [];
 
   return (
     <div>
@@ -24,7 +25,7 @@ function App() {
         <Navbar setSelected={setSelected} />
         <Routes>
           <Route exact path="/" element={<Home selected={selected} />}/>
-          <Route exact path="/movie/:id" element={<Show />} />
+          <Route exact path="/movie/:id" element={<Show watchlistArr={watchlistArr} />} />
           <Route exact path="/watchlist" element={<Index />} />
           <Route exact path="/watchlist/:id/edit" element={<Edit />} />
           <Route exact path='/construction' element={<UnderConstruction />} />

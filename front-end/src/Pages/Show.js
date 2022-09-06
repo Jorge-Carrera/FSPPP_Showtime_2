@@ -1,9 +1,9 @@
 import MovieDetails from '../Components/MovieDetails'
 
-function Show() {
+function Show({watchlistArr}) {
   return (
     <div>
-      <MovieDetails/>
+      <MovieDetails watchlistArr={watchlistArr}/>
     </div>
   )
 }
