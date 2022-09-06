@@ -21,7 +21,7 @@ function Movie({ result }) {
           </h2>
           <p className="flex items-center opacity-0 group-hover:opacity-100">
             {" "}
-            Released: 🎬 {result.release_date || result.first_air_date} {" "}
+            Released: 🎬 {result.release_date || result.first_air_date}{" "}
             <HandThumbUpIcon className="h-5 mx-2" /> {result.vote_count}{" "}
           </p>
         </div>

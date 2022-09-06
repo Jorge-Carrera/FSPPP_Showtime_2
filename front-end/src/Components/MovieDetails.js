@@ -7,7 +7,8 @@ function MovieDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [movie, setMovie] = useState();
-  const [genreArr, setGenre] = useState([]);
+  const [genreArr, setGenreArr] = useState([]);
+  const watchlistArr = [];
   const BASE_URL = "https://api.themoviedb.org/3/movie/";
   const KEY = process.env.REACT_APP_API_KEY;
   const API = process.env.REACT_APP_BACKEND_API_URL;
@@ -37,7 +38,7 @@ function MovieDetails() {
   }, [id]);
 
   useEffect(() => {
-    setGenre(
+    setGenreArr(
       movie?.genres.slice(0, 5).map((genre) => {
         return genre.name;
       })
@@ -55,6 +56,8 @@ function MovieDetails() {
       image: `https://image.tmdb.org/t/p/original${movie?.poster_path}`,
     });
   }, [movie, genreArr]);
+
+  const storedMovie = (watchlistArr) => {};
 
   const handleClick = () => {
     addMovie(item);
