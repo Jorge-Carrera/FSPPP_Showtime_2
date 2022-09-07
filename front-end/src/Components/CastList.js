@@ -15,23 +15,28 @@ function CastList({ id }) {
   }, [id]);
 
   return (
-    <section className="relative grid lg:grid-col-16 -mt-[60px]">
+    <section className="relative grid lg:grid-col-16 mt-10">
       <div className="col-start-12 lg:col-start-7">
-        <h3 className="text-xl invisible md:visible font-semibold sm:text-3xl lg:text-4xl mb-2 ">
+        <h3 className="text-xl invisible md:visible font-semibold sm:text-3xl lg:text-4xl mb-4 ">
           Cast:
         </h3>
         <div className="hidden md:flex">
           {cast.map((item, i) => {
             return (
               <div key={i}>
-                <div className="max-w-xs flex-col justify-center rounded-xl p-3 -m-4 sm:px-10 ">
+                <div className="group max-w-xs flex-col justify-center rounded-xl p-3 -m-4 sm:px-10 ">
                   <img
-                    className="aspect-square object-center object-cover h-[9rem] w-32 rounded"
+                    className="object-center object-cover rounded"
                     src={`https://image.tmdb.org/t/p/original/${item?.profile_path}`}
                     alt={item.name}
+                    height={1080}
+                    width={1920}
                   />
-                  <div className="my-2 space-y-1">
+                  <div className=" text-center my-2 space-y-1">
                     <h2 className="text-center text-xl">{item.name}</h2>
+                    <h5 className="opacity-0 group-hover:opacity-100 italic text-xs lg:text-base ">
+                      {item.character}
+                    </h5>
                   </div>
                 </div>
               </div>

@@ -1,10 +1,10 @@
 import Watchlist from "../Components/Watchlist"
 
 
-function Index() {
+function Index({watchlistArr}) {
   return (
     <div>
-      <Watchlist/>
+      <Watchlist watchlistArr={watchlistArr}/>
     </div>
   )
 }

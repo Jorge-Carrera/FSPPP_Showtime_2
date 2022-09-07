@@ -4,7 +4,7 @@ import WatchlistItem from "./WatchlistItem";
 
 const API = process.env.REACT_APP_BACKEND_API_URL;
 
-function Watchlist() {
+function Watchlist({watchlistArr}) {
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Watchlist() {
   return (
     <div className="px-5 my-10 sm:grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       {watchlist.map((item, id) => {
-        return <WatchlistItem key={id} item={item} />;
+        return <WatchlistItem key={id} item={item} watchlistArr={watchlistArr} />;
       })}
     </div>
   );

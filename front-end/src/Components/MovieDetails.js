@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import CastList from "./CastList";
+import { currencyFormatter } from "../utils/formatters";
 
 function MovieDetails({ watchlistArr }) {
   const navigate = useNavigate();
@@ -56,14 +57,13 @@ function MovieDetails({ watchlistArr }) {
     });
   }, [movie, genreArr]);
 
-
   const handleClick = () => {
-    const isMovieInWatchlist = watchlistArr.some((x) => x === item.title)
-    if (isMovieInWatchlist){
-      alert('This movie is already in your watchlist')
+    const isMovieInWatchlist = watchlistArr.some((x) => x === item.title);
+    if (isMovieInWatchlist) {
+      alert("This movie is already in your watchlist");
     } else {
-      watchlistArr.push(item.title)
-      console.log(watchlistArr)
+      watchlistArr.push(item.title);
+      console.log(watchlistArr);
       addMovie(item);
     }
   };
@@ -79,15 +79,15 @@ function MovieDetails({ watchlistArr }) {
         }}
       >
         <div className="absolute w-full h-[80vh] bg-gradient-to-t from-black "></div>
-        <div className=" relative grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div className=" relative grid max-w-screen-2xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <img
-            className="hidden lg:-ml-[65px] lg:mt-[40vh] md:h-[750px] lg:col-span-5 lg:flex "
+            className="hidden pl-16 lg:mt-[50vh] md:h-[850px] lg:col-span-5 lg:flex "
             src={`https://image.tmdb.org/t/p/original/${
               movie?.poster_path || movie?.backdrop_path
             }`}
             alt={movie?.title}
           />
-          <div className="mr-auto md:ml-[60px] place-self-center mt-[47vh] lg:mt-[70vh] lg:col-span-7 text-white">
+          <div className="mr-auto md:ml-[30px] place-self-center mt-[47vh] lg:mt-[70vh] lg:col-span-7 text-white">
             <div>
               <h1 className="max-w-2xl  mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">
                 {movie?.title || movie?.name}
@@ -111,10 +111,20 @@ function MovieDetails({ watchlistArr }) {
                   ADD TO WATCHLIST{" "}
                 </button>
               </div>
+              <div className="justify-evenly items-center h-auto text-xl">
+                <p>Status: {movie?.status}</p>
+                <p>Release Date: {movie?.release_date}</p>
+                <p>
+                  Budget: {currencyFormatter.format(movie?.budget) || "N/A"}
+                </p>
+                <p>
+                  Revenue: {currencyFormatter.format(movie?.revenue) || "N/A"}
+                </p>
+              </div>
             </div>
+            <CastList id={movie?.id} />
           </div>
         </div>
-        <CastList id={movie?.id} />
       </div>
     </section>
   );

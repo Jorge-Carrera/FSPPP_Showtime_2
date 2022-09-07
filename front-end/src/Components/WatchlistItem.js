@@ -2,15 +2,20 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function WatchlistItem({ item }) {
+function WatchlistItem({ item, watchlistArr }) {
   const id = item.id;
   const API = process.env.REACT_APP_BACKEND_API_URL;
 
   const handleDelete = () => {
+  const movieIndex = watchlistArr.indexOf(item.title);
+  if (movieIndex > -1) {
+     watchlistArr.splice(movieIndex, 1);
+    }
     axios
       .delete(`${API}/watchlist/${id}`)
       .then(() => console.log("success"))
       .catch((err) => console.log(err));
+  
   };
 
   return (
