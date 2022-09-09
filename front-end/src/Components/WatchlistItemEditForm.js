@@ -44,7 +44,7 @@ function WatchlistItemEditForm() {
   };
 
   return (
-    <section className="p-6 dark:text-gray-50 lg:mt-[10vh]">
+    <section className="p-6 text-gray-50 lg:mt-[10vh]">
       <form
         noValidate=""
         onSubmit={handleSubmit}
@@ -55,7 +55,7 @@ function WatchlistItemEditForm() {
             <p className="font-medium lg:text-2xl">
               Update Movie Information :
             </p>
-            <p className="text-xs md:text-sm">
+            <p className="text-xs md:text-sm lg:text-base">
               Please note, this information will only be visible to you, on your
               personal watchlist.
             </p>
@@ -137,6 +137,7 @@ function WatchlistItemEditForm() {
                 id="overview"
                 value={movie.overview}
                 onChange={handleChange}
+                rows='3'
                 placeholder="Movie Overview..."
                 className="w-full resize-y rounded-md focus:ring focus:ring-red-600 focus:ring-opacity-75 text-gray-900"
               ></textarea>
@@ -149,11 +150,11 @@ function WatchlistItemEditForm() {
                 <img
                   src={movie.image}
                   alt={movie.title}
-                  className="h-30 w-40 rounded-full bg-cover bg-center dark:bg-gray-700"
+                  className="h-30 w-40 rounded-full bg-cover bg-center bg-gray-700"
                 />
                 <button
                   type="submit"
-                  className="rounded-md border px-4 py-2 dark:border-gray-100"
+                  className="rounded-md border px-4 py-2 border-gray-100"
                 >
                   Submit Changes
                 </button>

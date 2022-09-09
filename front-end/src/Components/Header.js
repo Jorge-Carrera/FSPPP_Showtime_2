@@ -25,8 +25,12 @@ function Header({ setSelected }) {
         <Link to="/watchlist">
           <HeaderItem title={"WATCHLIST"} Icon={RectangleStackIcon} />
         </Link>
+        <Link to="/construction">
         <HeaderItem title={"SEARCH"} Icon={MagnifyingGlassIcon} />
+        </Link>
+        <Link to="/construction">
         <HeaderItem title={"ACCOUNT"} Icon={UserIcon} />
+        </Link>
       </div>
       <img
         className="object-contain"
