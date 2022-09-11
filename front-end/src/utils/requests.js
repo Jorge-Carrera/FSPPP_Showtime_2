@@ -3,6 +3,7 @@ const KEY = process.env.REACT_APP_API_KEY
 
 export default {
   fetchTrending: {
+    title: 'Trending',
     url: `/trending/movie/week?api_key=${KEY}&language=en-US`
   },
   fetchTopRated: {
