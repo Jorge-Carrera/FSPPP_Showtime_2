@@ -23,7 +23,7 @@ function MovieDetails({ watchlistArr }) {
   const [item, setItem] = useState({
     title: "",
     genre: "",
-    overview: "test",
+    overview: "",
     runtime: 0,
     tagline: "",
     rating: 0.0,
@@ -63,8 +63,8 @@ function MovieDetails({ watchlistArr }) {
       alert("This movie is already in your watchlist");
     } else {
       watchlistArr.push(item.title);
-      console.log(watchlistArr);
       addMovie(item);
+      console.log(item)
     }
   };
 

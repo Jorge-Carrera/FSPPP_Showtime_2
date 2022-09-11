@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import requests from "./utils/requests";
-import { UserProvider } from "./Providers/UserProvider";
+import { UserContext, UserProvider } from "./Providers/UserProvider";
 
 //Components
 import Header from "./Components/Header";
@@ -14,19 +14,20 @@ import Show from "./Pages/Show";
 import Edit from "./Pages/Edit";
 import FourOFour from "./Pages/FourOFour";
 import UnderConstruction from "./Pages/UnderConstruction";
-import PricingPlans from "./Pages/LandingPage";
+import LandingPage from "./Pages/LandingPage";
 
 function App() {
   const [selected, setSelected] = useState(requests.fetchTrending.url);
   let watchlistArr = []
   const user = true
 
+
   return (
     <div>
       <UserProvider>
       <Router>
         {!user ? (
-          <PricingPlans />
+          <LandingPage />
         ): (
           <>
           <Header setSelected={setSelected} />

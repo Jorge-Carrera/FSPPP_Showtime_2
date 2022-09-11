@@ -27,6 +27,7 @@ auth.useDeviceLanguage();
 
 const googleProvider = new GoogleAuthProvider();
 
+
 export const signInWithGoogle = () => {
    try {
       signInWithPopup(auth, googleProvider).then((res) => {
@@ -37,6 +38,7 @@ export const signInWithGoogle = () => {
     console.log(error)
    }
 }
+
 
 export const signOut = async () => {
   try {

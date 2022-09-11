@@ -1,8 +1,45 @@
-import React, { useContext, useEffect } from "react";
-import { signInWithGoogle, signOut } from '../Services/Firebase'
+import React, { useContext, useEffect, useRef } from "react";
+import { signInWithGoogle, auth } from "../Services/Firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { UserContext } from "../Providers/UserProvider";
 
 function SignIn() {
-  const user = useContext(useContext)
+  const user = useContext(UserContext);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const signUpWithEmail = () => {
+    try {
+      createUserWithEmailAndPassword(
+        auth,
+        emailRef.current.value,
+        passwordRef.current.value
+      ).then((res) => {
+        const user = res.user
+        console.log(res.user);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const signInWithEmail = () => {
+    try {
+      signInWithEmailAndPassword(
+        auth,
+        emailRef.current.value,
+        passwordRef.current.value
+      ).then((res) => {
+        const user = res.user
+        console.log(res.user);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className="max-w-md mx-auto p-8 -mt-8 space-y-3 rounded-xl bg-black text-white">
@@ -16,6 +53,7 @@ function SignIn() {
             type="text"
             name="username"
             id="username"
+            ref={emailRef}
             placeholder="Username"
             className="w-full px-4 py-3 rounded-md border-none focus:ring-0 text-black "
           />
@@ -27,29 +65,30 @@ function SignIn() {
           <input
             type="password"
             name="password"
+            ref={passwordRef}
             id="password"
             placeholder="Password"
             className="w-full px-4 py-3 rounded-md border-none focus:ring-0 text-black "
           />
-          <div className="flex justify-end text-xs text-white">
-            <a rel="noopener noreferrer" href="#">
-              Forgot Password?
-            </a>
-          </div>
         </div>
-        <button className="block w-full p-3 text-center rounded-sm text-white bg-[#E41F1D]">
+        <button
+          className="block w-full p-3 text-center rounded-sm text-white bg-[#E41F1D]"
+          onClick={signInWithEmail}
+        >
           Sign in
         </button>
       </form>
       <div className="flex items-center pt-4 space-x-1">
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
-        <p className="px-3 text-sm text-gray-400">
-          Login with social accounts
-        </p>
+        <p className="px-3 text-sm text-gray-400">Login with social accounts</p>
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
       </div>
       <div className="flex justify-center space-x-4">
-        <button aria-label="Log in with Google" onClick={ signInWithGoogle } className="p-3 rounded-sm">
+        <button
+          aria-label="Log in with Google"
+          onClick={signInWithGoogle}
+          className="p-3 rounded-sm"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
@@ -77,6 +116,16 @@ function SignIn() {
           </svg>
         </button>
       </div>
+      <span className="text-xs text-center sm:px-6 text-gray-400">
+        Don't have an account?
+        <p
+          onClick={signUpWithEmail}
+          href="#"
+          className="underline hover:cursor-pointer text-gray-100"
+        >
+          Sign up
+        </p>
+      </span>
     </div>
   );
 }

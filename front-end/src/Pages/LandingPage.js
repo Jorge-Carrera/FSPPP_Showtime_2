@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SignIn from "../Components/SignIn";
 import masthead from "../masthead.jpeg";
 
-function PricingPlans() {
+function LandingPage() {
   const [signIn, setSignIn] = useState(false);
 
   return (
@@ -38,22 +38,13 @@ function PricingPlans() {
             <h2 className="text-3xl mb-7">
               Watch anywhere. Cancel at anytime.
             </h2>
-            <h3>Enter your email to begin</h3>
-            <form className="p-3 m-4">
-              <input
-                className="p-4 border-none text-black focus:ring-0 h-11 w-1/3 max-w-[600px]"
-                type="email"
-                placeholder="Email Address"
-              />
-              <button
-                className="px-2.5 py-2.5 text-white font-medium bg-[#E41F1D]"
-                onClick={() => setSignIn(true)}
-                type='submit'
-              >
-                {" "}
-                GET STARTED{" "}
-              </button>
-            </form>
+            <button
+              className="px-2.5 py-2.5 text-white font-medium bg-[#E41F1D]"
+              onClick={() => setSignIn(true)}
+            >
+              {" "}
+              GET STARTED{" "}
+            </button>
           </>
         )}
       </div>
@@ -61,4 +52,4 @@ function PricingPlans() {
   );
 }
 
-export default PricingPlans;
+export default LandingPage;
