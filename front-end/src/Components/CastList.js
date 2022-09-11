@@ -12,7 +12,7 @@ function CastList({ id }) {
       )
       .then((res) => setCast(res.data.cast.slice(0, 5)))
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, KEY]);
 
   return (
     <section className="relative grid lg:grid-col-16 mt-10">

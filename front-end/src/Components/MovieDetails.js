@@ -35,7 +35,7 @@ function MovieDetails({ watchlistArr }) {
       .get(`${BASE_URL}${id}?api_key=${KEY}&language=en-US`)
       .then((res) => setMovie(res.data))
       .catch((err) => console.log(err));
-  }, [id]);
+  }, [id, KEY]);
 
   useEffect(() => {
     setGenreArr(

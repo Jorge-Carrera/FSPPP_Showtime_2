@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import requests from "./utils/requests";
-import { UserContext, UserProvider } from "./Providers/UserProvider";
+import { UserProvider } from "./Providers/UserProvider";
 
 //Components
 import Header from "./Components/Header";
